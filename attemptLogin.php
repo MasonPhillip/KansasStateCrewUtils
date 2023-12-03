@@ -1,14 +1,14 @@
 <?php
 //init db vars
 $servername = "localhost:3306";
-$username = "mdphawk01";
+$username = "i9673948_wp1";
 $password = "abc12345";
-$dbname = "videoComments";
+$dbname = "i9673948_wp1";
 $conn = mysqli_connect($servername, $username, $password, $dbname);
 
 //pull the entered name and password from post
-$name = $_POST["name"];
-$password = $_POST["password"];
+$name = htmlspecialchars($_POST["name"]);
+$password = htmlspecialchars($_POST["password"]);
 
 //query the db for users and their names
 $query = "SELECT * FROM users;";

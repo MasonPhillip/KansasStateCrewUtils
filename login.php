@@ -1,55 +1,43 @@
-<?php
-echo $response;
 
-?>
-
-<style>
-
-	body{
-		background-color: #512888;
-	}
-
-	.centerBox{
-		margin: auto;
-		border: 3px solid #000;
-		height: 200px;
-		width: 375px;
-		text-align: center;
-		font-size: 30px;    
-		font-weight: bold;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       %;
-	}
-
-	.loginButton{
-		margin-top:2%;
-		font-weight: bold;
-		height: 30px;
-		width: 70px;
-		background-color: #967bb6
-	}
-	.header{
-		font-weight:bold;
-		font-size:50px;
-		font-family: "Times New Roman", Times, serif;
-		text-align: center;
-	}
-</style>
+<html lang="en" data-bs-theme="dark">
 <head>
 		<title>Login</title>
+		    <title> <?php echo $title; ?></title>
+    <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 			
 <body>
-	<div class="header">Kansas State Crew Utils App</div>
-	<div class="centerBox">
-		<div style="margin-top: 12%;">
-			Name
-			<input type="textbox" style="margin: auto; height: 30px;" id="nameBox" name="nameBox"> </input>
-		</div>
-		<div style = "margin-top:2% ;">
-			Password
-			<input type="password" style="height: 30px;" id="passwordBox" name="passwordBox"> </input>
-		</div>
-		<input type="button" id="loginBtn" class= "loginButton" value = "Login" onClick='loginAttempt()'> </input>
-	</div>
+     <div class="d-flex justify-content-center">
+         <h1>Login</h1>
+         </div>
+
+<div class="d-flex justify-content-center">
+    <div class="input-group mb-3 w-50">
+        <div class="input-group-prepend">
+            <span class="input-group-text bg-primary" id="basic-addon3">Name</span>
+        </div>
+     <input type="text" class="form-control" id="nameBox" name="nameBox" aria-describedby="basic-addon3">
+    </div>
+</div>
+
+<br>
+
+<div class="d-flex justify-content-center">
+    <div class="input-group mb-3 w-50">
+        <div class="input-group-prepend">
+            <span class="input-group-text bg-primary" id="basic-addon3">Password</span>
+        </div>
+     <input type="password" class="form-control" id="passwordBox" name="passwordBox" aria-describedby="basic-addon3">
+    </div>
+</div>
+
+
+<div class="d-flex justify-content-center">
+	<button id="loginBtn" class= "btn-lg" onClick='loginAttempt()'>Login </button>
+</div>
 
 </body>
 <script>
@@ -72,7 +60,7 @@ echo $response;
         var attempted = 0;
 
         //if one of the fields are blank the login button doesn't do anything
-        if(name == "" || passwordd == ""){
+        if(name == "" || password == ""){
             return 0;
         }
         
@@ -90,6 +78,18 @@ echo $response;
                     if(xhttp.responseText.indexOf("accepted + ") >= 0){
                         console.log('logged in');
                         console.log(xhttp.responseText);
+						var form = document.createElement('form');
+						form.action = "/videos.php";
+						form.method='POST';
+						var userId = document.createElement('input');
+						userId.type='hidden';
+						userId.setAttribute("name", "userId");
+						userId.setAttribute("id", "userId");
+						userId.setAttribute("value", xhttp.responseText.slice(11));
+						form.appendChild(userId);
+						document.body.appendChild(form);
+						form.submit();
+						//window.location.replace("videos.php");
                     }
                     //if the username is valid but the password doesn't match alert the user and clear the password box
                     else if(xhttp.responseText == "validName"){
