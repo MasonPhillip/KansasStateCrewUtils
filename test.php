@@ -1,0 +1,1 @@
+<?php echo str_replace("/view?usp=sharing", "", "https://drive.google.com/file/d/13eXdLVpLGGkdRypnhWuGn0SAXOMSVhez/view?usp=sharing"); ?>

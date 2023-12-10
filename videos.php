@@ -6,9 +6,11 @@ $username = "i9673948_wp1";
 $password = "abc12345";
 $dbname = "i9673948_wp1";
 $conn = mysqli_connect($servername, $username, $password, $dbname);
+$query = "SELECT teamID from users WHERE ID = ".$_POST["userId"];
+$teamID = ($conn->query($query))->fetch_assoc()["teamID"];
 
 //run query
-$query = "SELECT videos.ID, videos.url, videos.videoTitle, videos.lastCommentDate, users.name FROM videos INNER JOIN users ON videos.createdByUserID=users.ID ORDER BY videos.lastCommentDate DESC;";
+$query = "SELECT videos.ID, videos.url, videos.videoTitle, videos.lastCommentDate, users.name FROM videos INNER JOIN users ON videos.createdByUserID=users.ID where users.teamID ='".$teamID."' ORDER BY videos.lastCommentDate DESC;";
 $videos = $conn->query($query);
 
 ?>
@@ -25,9 +27,11 @@ $videos = $conn->query($query);
 
 
 <body>
+    <br>
     <div class="d-flex justify-content-center">
-<button class="bg-primary" onclick="newVideo()">New Video</button>
+<button class="btn btn-lg btn-primary" onclick="newVideo()">New Video</button>
 </div>
+<br>
 <div class="d-flex justify-content-center">
     <table class="table table-striped table-bordered table-responsive w-75">
         <thead>

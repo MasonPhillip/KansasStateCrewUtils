@@ -11,13 +11,13 @@
 			
 <body>
      <div class="d-flex justify-content-center">
-         <h1>Login</h1>
-         </div>
+         <h1 class="display-1">Login</h1>
+        </div>
 
 <div class="d-flex justify-content-center">
     <div class="input-group mb-3 w-50">
         <div class="input-group-prepend">
-            <span class="input-group-text bg-primary" id="basic-addon3">Name</span>
+            <span class="input-group-text bg-primary" id="basic-addon3">Email</span>
         </div>
      <input type="text" class="form-control" id="nameBox" name="nameBox" aria-describedby="basic-addon3">
     </div>
@@ -33,10 +33,14 @@
      <input type="password" class="form-control" id="passwordBox" name="passwordBox" aria-describedby="basic-addon3">
     </div>
 </div>
+<div class="d-flex justify-content-center">
+    <a href=createLogin.php>Create Account</a>
+</div>
 
+<br>
 
 <div class="d-flex justify-content-center">
-	<button id="loginBtn" class= "btn-lg" onClick='loginAttempt()'>Login </button>
+	<button id="loginBtn" class="btn btn-lg btn-primary" onClick='loginAttempt()'>Login </button>
 </div>
 
 </body>
