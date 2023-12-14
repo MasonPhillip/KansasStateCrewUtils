@@ -1,10 +1,7 @@
 <?php
 //inserts a video to the db and posts to a discord webhook to notify the team of the comment
-$servername = "localhost:3306";
-$username = "i9673948_wp1";
-$password = "abc12345";
-$dbname = "i9673948_wp1";
-$conn = mysqli_connect($servername, $username, $password, $dbname);
+//use db conn
+include_once('../databaseCreds.php');
 
 //get the webhook
 $query = "SELECT * from webhooks";

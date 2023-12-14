@@ -1,16 +1,82 @@
-KSU Crew comments App
-<br>
-<button onclick="loginPage()">login</button>
-<button onclick="createLoginPage()">New Login</button>
+<!doctype html>
+<html lang="en" data-bs-theme="dark">
+    <head>
+        <title>KSU Crew Utils</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+        <style>
+           .navLogo {
+                max-width: 100px; 
+                height: auto; 
+            }
 
-<script>
-    function loginPage(){
-        window.open("login.php");
-        window.close();
-    }
-    
-    function createloginPage(){
-        window.open("createLogin.php");
-        window.close();
-    }
-</script>
+      </style>
+    </head>
+
+    <body>
+        <nav class='navbar navbar-expand-sm' style='background-color: #795695'><div class='container-fluid'><img src='../images/crest.png' class='navLogo' alt='logo'><!-- Links --><ul class='navbar-nav'><li class='nav-item'><a class='nav-link' href='#'>Link 1</a></li><li class='nav-item'><a class='nav-link' href='#'>Link 2</a></li><li class='nav-item'><a class='nav-link' href='#'>Link 3</a></li></ul></div></nav>
+        <div class="d-flex justify-content-center"><h1 class="display-1">Kansas State Crew Utilities</h1></div>
+        <br>
+        <div class="d-flex justify-content-center">
+            <div class="row">
+
+                    <!--Workout Tracker Card -->
+                    <div class="col col-md-6 col-lg-3 mb-3 d-flex align-items-stretch">
+                        <div class="card" style="width: 18rem;">
+                            <img src="../images/workoutTrackerImage.jpg" class="card-img-top" alt="Workout Image">
+                            <div class="card-body">
+                                <h5 class="card-title">Workout Tracker (Beta)</h5>
+                                <p class="card-text">Log your workouts or connect your C2 Logbook and get analytics on your progress and pieces</p>
+                                <a href="login.php?mode=1" class="btn" style='background-color: #795695'>Login</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Video Comments Card -->
+                    <div class="col col-md-6 col-lg-3 pl-3 mb-3 d-flex align-items-stretch">
+                        <div class="card" style="width: 18rem;">
+                            <img src="../images/homeImage.jpg" class="card-img-top" alt="Boat Image">
+                            <br><br>
+                            <div class="card-body">
+                                <h5 class="card-title">Video Comments</h5>
+                                <p class="card-text">Create and read commments on technique on videos from Google Drive or YouTube</p>
+
+                                <a href="login.php?mode=2" class="btn" style='background-color: #795695'>Login</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Create Account -->
+                    <div class="col col-md-6 col-lg-3 pl-3 pr-3 mb-3 d-flex align-items-stretch">
+                        <div class="card" style="width: 18rem;">
+                            <img src="../images/accountImage.jpg" class="card-img-top" alt="Account Image">
+                            <div class="card-body">
+                                <h5 class="card-title">Create Account</h5>
+                                <p class="card-text">Athletes can create a new account here to access thier team's services</p>
+                                <br>
+                                <a href="createLogin.php" class="btn" style='background-color: #795695'>Create Account</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Request Access Card -->
+                    <div class="col col-md-6 col-lg-3 mb-3 d-flex align-items-stretch">
+                        <div class="card" style="width: 18rem;">
+                            <img src="../images/teamPhoto.jpg" class="card-img-top" alt="Sunset Image">
+                            <div class="card-body">
+                                <h5 class="card-title">Request Access</h5>
+                                <p class="card-text">Request a space for your team, so your team can access our services.</p>
+                                <br>
+                                <a href="#" class="btn" style='background-color: #795695'>Request</a>
+                            </div>
+                        </div>
+                    </div>
+                
+            </div>
+        </div>
+
+    </body>
+
+</html>

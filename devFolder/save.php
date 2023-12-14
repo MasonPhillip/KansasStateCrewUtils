@@ -17,4 +17,8 @@ curl_setopt($ch,CURLOPT_POSTFIELDS, json_encode( $msg ) );
 $responses = curl_exec($ch);
 curl_close($ch);
 
+        
+        //c2 connect link
+        <a href="https://log.concept2.com/oauth/authorize?client_id=QbCIpBcFVKGwRDTv1inr1oWf4QEWy6nJFzVgZzN8&scope=user:read,results:read&response_type=code&redirect_uri=https://kansasstatecrewutils.org">Connect c2 account</a>
+
 ?>

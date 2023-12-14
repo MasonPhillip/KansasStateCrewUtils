@@ -11,7 +11,7 @@
 
 <div class="container">
   <h2>Add Video</h2>
-  <form action="/insertVideo.php" method="post" id="f">
+  <form action="ajaxScripts/insertVideo.php" method="post" id="f">
     <div class="form-group">
       <label for="title">Title:</label>
       <input type="textbox" class="form-control" id="title" placeholder="Enter Video Thread Title" name="title">

@@ -43,7 +43,7 @@ curl_close($ch);
 ?>
 
 <body>
-    <form action="videoComments.php" method="post" id="f">
+    <form action="../videoComments.php" method="post" id="f">
         <input type="hidden" id="videoID" name="videoID" value=<?php echo "'".$last_id."'";?>></input>
         <input type="hidden" id="userID" value=<?php echo "'".$_POST["createdByID"]."'";?></input
         
