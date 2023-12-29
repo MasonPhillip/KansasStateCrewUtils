@@ -38,14 +38,6 @@
                 </div>
             
                 <br>
-                <div class="d-flex justify-content-center">
-                    <div class="input-group mb-3 w-75">
-                        <div class="input-group-prepend rounded-left">
-                            <span class="input-group-text rounded-left" style='background-color: #52307c' id="basic-addon3">Team Code</span>
-                        </div>
-                        <input type="text" class="form-control rounded" id="teamBox" name="teamBox" aria-describedby="basic-addon3"><p class="text-danger" id="teamWarning">*</p>
-                    </div>
-                </div>
             
                 <br>
                 <div class="d-flex justify-content-center">
@@ -87,7 +79,8 @@
             function newLogin(){
                 var name = document.getElementById('nameBox');
                 var discord = document.getElementById('discordBox');
-                var team = document.getElementById('teamBox');
+                var team = document.createElement('teamBox');
+                team.value = 0 <?php echo $_POST["teamId"]; ?>;
                 var password = document.getElementById('passwordBox');
                 var confirmPassword = document.getElementById('confirmPasswordBox');
                 var cont = true;
@@ -98,10 +91,6 @@
                 }
                 if(discord.value == ""){
                     document.getElementById('discordWarning').innerHTML = "*required";
-                    cont=false;
-                }
-                if(team.value == ""){
-                    document.getElementById('teamWarning').innerHTML = "*required";
                     cont=false;
                 }
                 if(password.value == ""){
@@ -156,11 +145,7 @@
             		}
                     //send the http response request
     		        xhttp.send("name="+name.value+"&team="+team.value);
-                    
-                    
                 }
-                
-                
             }
             
             //make the enter key enter the form when the password is in the 

@@ -16,12 +16,16 @@
             <div class="d-flex justify-content-center">
                 <h1 class="display-1">Login</h1>
             </div>
+            <!-- since the c2 page returns to login, add this so the js on that page can display a message -->
+            <div class="d-flex justify-content-center">
+                <h6 id="returnDisplay"></h6>
+            </div>
             <br>
             <!--name entry -->
             <div class="d-flex justify-content-center">
                 <div class="input-group mb-3 w-75">
                     <div class="input-group-prepend">
-                        <span class="input-group-text" style='background-color: #795695' id="basic-addon3">Name</span>
+                        <span class="input-group-text" style='background-color: #52307c' id="basic-addon3">Name</span>
                     </div>
                     <input type="text" class="form-control" id="nameBox" name="nameBox" aria-describedby="basic-addon3">
                 </div>
@@ -32,7 +36,7 @@
             <div class="d-flex justify-content-center">
                 <div class="input-group mb-3 w-75">
                     <div class="input-group-prepend">
-                        <span class="input-group-text" style='background-color: #795695' id="basic-addon3">Password</span>
+                        <span class="input-group-text" style='background-color: #52307c' id="basic-addon3">Password</span>
                     </div>
                     <input type="password" class="form-control" id="passwordBox" name="passwordBox" aria-describedby="basic-addon3">
                 </div>
@@ -47,7 +51,7 @@
     
             <!--Login Button-->
             <div class="d-flex justify-content-center">
-    	        <button id="loginBtn" class="btn btn-lg" style='background-color: #795695' onClick='loginAttempt()'>Login </button>
+    	        <button id="loginBtn" class="btn btn-lg" style='background-color: #52307c' onClick='loginAttempt()'>Login </button>
             </div>
         </div>
     </body>
@@ -90,7 +94,34 @@
                             console.log('logged in');
                             console.log(xhttp.responseText);
     						var form = document.createElement('form');
-    						form.action = "/videos.php";
+    						//mode 1 means open the workout tracker
+    						if(0<?php echo $_GET["mode"]; ?> == 1){
+    						    form.action = "/pieceTrackerHome.php";
+    						}
+    						else if(0<?php echo $_GET["mode"]; ?> == 2){
+    						    form.action = "/videos.php";
+    						}
+    						else if(0<?php echo $_GET["mode"]; ?> == 3){
+    						    form.action = "/editAccount.php";
+    						}
+    						
+    						else if(0<?php echo $_GET["mode"]; ?> == 4){
+        						form.action = "ajaxScripts/insertC2.php";
+        						form.method='POST';
+        						var userId = document.createElement('input');
+        						userId.type='hidden';
+        						userId.setAttribute("name", "userId");
+        						userId.setAttribute("id", "userId");
+        						userId.setAttribute("value", xhttp.responseText.slice(11));
+        						var c2Auth = document.createElement('input');
+        						c2Auth.type='hidden';
+        						c2Auth.setAttribute("name", "c2Auth");
+        						c2Auth.setAttribute("id", "c2Auth");
+        						c2Auth.setAttribute("value", '<?php echo $_GET["code"]; ?>');
+        						form.appendChild(c2Auth);
+        						document.body.appendChild(form);
+        						form.submit();
+    						}
     						form.method='POST';
     						var userId = document.createElement('input');
     						userId.type='hidden';

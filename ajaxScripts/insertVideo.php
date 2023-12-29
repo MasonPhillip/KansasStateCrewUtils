@@ -1,10 +1,5 @@
 <?php
-//init db vars
-$servername = "localhost:3306";
-$username = "i9673948_wp1";
-$password = "abc12345";
-$dbname = "i9673948_wp1";
-$conn = mysqli_connect($servername, $username, $password, $dbname);
+include_once('../databaseCreds.php');
 
 //insert video into vidoes table
 $query = "INSERT INTO videos(url, videoTitle, createdByUserID) VALUES('".str_replace("/view?usp=sharing", "", htmlspecialchars($_POST["url"]))."', '".htmlspecialchars($_POST["title"])."' ,".htmlspecialchars($_POST["createdByID"]).");";

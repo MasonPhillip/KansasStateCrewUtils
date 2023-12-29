@@ -48,7 +48,7 @@
                 }
             ?>
             <br></br>
-            <div class='d-flex justify-content-center' ">
+            <div class='d-flex justify-content-center'>
                 <div style="width: 75%;">
                     <div class="input-group input-group-lg"><span class="input-group-text"> Add Commment</span><textarea class="form-control" aria-label="With textarea" id="commentBox"></textarea><button class="btn btn-outline-primary" type="button" id="button-addon2" onClick="addComment()">Enter</button></div>
                 </div>
