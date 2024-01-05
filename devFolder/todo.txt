@@ -1,5 +1,4 @@
-request access page
-edit account page
-add navbar to all pages
+
 breadcrumbs
 add reply to hilighted video on videos page
+create new landing page for connect c2

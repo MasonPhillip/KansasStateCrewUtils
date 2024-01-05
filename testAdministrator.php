@@ -1,8 +1,7 @@
 <html lang="en" data-bs-theme="dark">
     <?php 
         include_once 'databaseCreds.php'; //use the database
-        $query = "SELECT teamId FROM users WHERE ID=".$_POST["userId"];
-        $teamId = $conn->query($query)->fetch_assoc()["teamId"];
+        $teamId = $_SESSION["teamId"];
     ?>
     <head>
     	<title>Test Info</title>
@@ -24,7 +23,7 @@
                     <h1 class="display-1">Test Information</h1>
                 </div>
                 <br>
-                <input type="hidden" value='<?php echo $_POST["userId"];?>' id="userId" name="userId"></input>
+                <input type="hidden" value='<?php echo $_SESSION["userId"];?>' id="userId" name="userId"></input>
                 <input type="hidden" value='<?php echo $teamId;?>' id="teamId" name="teamId"></input>
                 
                 <!-- input group for title -->

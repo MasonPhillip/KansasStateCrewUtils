@@ -5,6 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     </head>
 
     <body>
@@ -80,7 +81,7 @@
                 var name = document.getElementById('nameBox');
                 var discord = document.getElementById('discordBox');
                 var team = document.createElement('teamBox');
-                team.value = 0 <?php echo $_POST["teamId"]; ?>;
+                team.value = 0 <?php echo $_SESSION["teamId"]; ?>;
                 var password = document.getElementById('passwordBox');
                 var confirmPassword = document.getElementById('confirmPasswordBox');
                 var cont = true;
@@ -110,16 +111,15 @@
                 }
                 
                 if(cont){
-                    var xhttp = new XMLHttpRequest();
-            		xhttp.open("POST", "ajaxScripts/validateNewLogin.php");
-            		xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-                    var attempted =0;
-            		//how to handle the response
-            		xhttp.onreadystatechange = () =>{
-            			if(xhttp.status === 200){
-            				attempted++;
-                            if(attempted == 2){
-                                var response = xhttp.responseText.split("|");
+                    $.ajax({
+                        method: "POST",
+                        url: "ajaxScripts/validateNewLogin.php",
+                        data: {
+                            name: name.value;
+                            team: team.value;
+                        },
+                        success: function(data{
+                            var response = xhttp.responseText.split("|");
                                 alert(response[0]+response[1]);
                                 if(response[0] == "Team Not Found"){
                                     alert("Team Code Could Not be Found");
@@ -136,16 +136,11 @@
                                     f.appendChild(discord);
                                     f.appendChild(team);
                                     f.appendChild(password);
-                                    
                                     document.body.appendChild(f);
                                     f.submit();
-                                }
-                            }
                         }
-            		}
-                    //send the http response request
-    		        xhttp.send("name="+name.value+"&team="+team.value);
-                }
+                        
+                    });
             }
             
             //make the enter key enter the form when the password is in the 

@@ -7,6 +7,10 @@ include_once('../databaseCreds.php');
 //insert the values into users
 $query = "INSERT INTO users (name, discordHandle, password, teamID) VALUES ('".htmlspecialchars($_POST["nameBox"])."', '".htmlspecialchars($_POST["discordBox"])."', '".htmlspecialchars($_POST["passwordBox"])."', ".$_POST["teamBox"].");";
 $conn->query($query);
+session_start();
+$_SESSION["userId"] = $conn->insert_id;
+$_SESSION["teamId"] = $_POST["teamBox"];
+$SESSION["isCoach"] = 0;
 ?>
 
 <html>
@@ -22,12 +26,6 @@ $conn->query($query);
         var form = document.createElement('form');
 		form.action = "/videos.php";
 		form.method='POST';
-		var userId = document.createElement('input');
-		userId.type='hidden';
-		userId.setAttribute("name", "userId");
-		userId.setAttribute("id", "userId");
-		userId.setAttribute("value", '<?php echo $conn->insert_id;?>');
-		form.appendChild(userId);
 		document.body.appendChild(form);
 		form.submit();
         

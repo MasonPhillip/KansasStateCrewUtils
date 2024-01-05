@@ -2,7 +2,7 @@
     include_once('databaseCreds.php');
     $query = "SELECT U.ID as userID, U.name as name, C.comment as comment, V.url AS url, V.videoTitle AS  videoTitle FROM comments AS C JOIN users AS U on C.userID = U.ID JOIN videos AS V on V.ID = C.videoID WHERE C.videoId = ".$_POST["videoID"];
     $comments = $conn->query($query);
-    $userID = $_POST["userID"];
+    $userID = $_SESSION["userID"];
     $first = $comments->fetch_assoc();
     $title = $first["videoTitle"];
     $url = $first["url"];
@@ -14,6 +14,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     </head>
 
     <body>
@@ -66,19 +67,24 @@
             document.getElementById("button-addon2").click();
         }
         });
-    
+        
         //when the user clicks enter add the comment to the page and refresh the page with a new comment
         function addComment(){
             var comment = document.getElementById("commentBox").value;
             if(comment != ""){
-                var userID = <?php echo $userID; ?>;
-                var videoID = <?php echo $_POST["videoID"]; ?>;
-                var xhttp = new XMLHttpRequest();
-        		xhttp.open("POST", "insertComment.php");
-        		xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-            	xhttp.send("userID="+userID+"&videoID="+videoID+"&comment="+comment);
-            	alert("comment added");
-            	location.reload();
+                $.ajax({
+                   method: "POST",
+                   url: "ajaxScripts/insertComment.php",
+                   data: {
+                       videoID: <?php echo $_POST["videoID"]; ?>,
+                       comment: comment
+                   },
+                   success: function(data){
+                       alert(data);
+                       location.reload();
+                   }
+                });
+                
             }
         }
     </script>

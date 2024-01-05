@@ -1,10 +1,6 @@
 <?php
 //ensures the name is not already in use and that the team code exists
-$servername = "localhost:3306";
-$username = "i9673948_wp1";
-$password = "abc12345";
-$dbname = "i9673948_wp1";
-$conn = mysqli_connect($servername, $username, $password, $dbname);
+include_once('../databaseCreds.php');
 
 //initialize the response
 $response = "";

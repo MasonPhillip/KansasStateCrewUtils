@@ -1,6 +1,7 @@
 <?php
     include_once '../databaseCreds.php';
-    $query = "UPDATE teams SET code='".$_POST["code"]."' WHERE ID = ".$_POST["teamId"];
+    $SESSION_START();
+    $query = "UPDATE teams SET code='".$_POST["code"]."' WHERE ID = ".$_SESSION["teamId"];
     $conn->query($query);
     echo "success";
 ?>

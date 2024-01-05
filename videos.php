@@ -2,14 +2,6 @@
     <?php
         //incluce the db conn
         include_once('databaseCreds.php');
-        
-        //get the team id
-        $query = "SELECT teamID from users WHERE ID = ".$_POST["userId"];
-        $teamID = ($conn->query($query))->fetch_assoc()["teamID"];
-    
-        //select all the videos with a matching team id
-        $query = "SELECT videos.ID, videos.url, videos.videoTitle, videos.lastCommentDate, users.name FROM videos INNER JOIN users ON videos.createdByUserID=users.ID where users.teamID ='".$teamID."' ORDER BY videos.lastCommentDate DESC;";
-        $videos = $conn->query($query);
     ?>
 
 
@@ -20,13 +12,20 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     </head>
 
 
     <body>
         <?php include_once 'navBar.php'; //add navbar ?>
         
-        <?php $first = $videos->fetch_assoc();// get the most recent video so we can display it in a special way?>
+        <?php
+            $teamID = $_SESSION["teamId"];
+            //select all the videos with a matching team id
+            $query = "SELECT videos.ID, videos.url, videos.videoTitle, videos.lastCommentDate, users.name FROM videos INNER JOIN users ON videos.createdByUserID=users.ID where users.teamID ='".$teamID."' ORDER BY videos.lastCommentDate DESC;";
+            $videos = $conn->query($query);
+            $first = $videos->fetch_assoc();// get the most recent video so we can display it in a special way
+            ?>
         <br>
         
         
@@ -123,7 +122,6 @@
                                 <label for="comment">Comment:</label>
                                 <input type="textbox" class="form-control mb-3" id="comment" placeholder="Enter comment" name="comment">
                                 </div>
-                            <input type="hidden" id="createdByID", name="createdByID" value=<?php echo "'".$_POST["userId"]."'"; ?>></input>
                             <div class="d-flex justify-content-center">
                                 <input type="button" style='background-color: #52307c; text-color: #aaa;' class='btn' value="Submit" onClick="validateAndSumbit()"></button>
                             </div>
@@ -136,47 +134,59 @@
     </body>
 
     <script>
-    
         //Handles the event the open button in the table or video is pressed
         //should be passed the button iteslf whose ID matches it's associated video id
         function openVideo(btn){
             //create a form to submit
             var form = document.createElement('form');
-    		form.action = "videoComments.php";
-    		form.method='POST';
-    		//create an input that stores the current user id to be recieved from post in next page
-    		var userId = document.createElement('input');
-    		userId.type='hidden';
-    		userId.setAttribute("name", "userId");
-    		userId.setAttribute("id", "userId");
-    		userId.setAttribute("value", <?php echo $_POST["userId"] ?>);
-    		form.appendChild(userId);
-    		//create another hidden input that stores the video id to be recieved from post in the next page
-    		var videoId = document.createElement('input');
-    		videoId.type='hidden';
-    		videoId.setAttribute("name", "videoID");
-    		videoId.setAttribute("id", "videoID");
-    		videoId.setAttribute("value", btn.id)
-    		form.appendChild(videoId);
-    		//add the form to body
-    		document.body.appendChild(form);
-    		form.submit();//submit the form
+            form.action = "videoComments.php";
+            form.method='POST';
+            //create another hidden input that stores the video id to be recieved from post in the next page
+            var videoId = document.createElement('input');
+            videoId.type='hidden';
+            videoId.setAttribute("name", "videoID");
+            videoId.setAttribute("id", "videoID");
+            videoId.setAttribute("value", btn.id)
+            form.appendChild(videoId);
+            //add the form to body
+            document.body.appendChild(form);
+            form.submit();//submit the form
         }
         
+        //when the user clicks enter add the comment to the page and refresh the page with a new comment
+        function addComment(){
+            var comment = document.getElementById("commentBox").value;
+            if(comment != ""){
+                $.ajax({
+                   method: "POST",
+                   url: "ajaxScripts/insertComment.php",
+                   data: {
+                       videoID: <?php echo $first["ID"]; ?>,
+                       comment: comment
+                   },
+                   success: function(data){
+                       alert(data);
+                       location.reload();
+                   }
+                });
+            }
+        }
+        
+        //validates the data and adds the video
         function validateAndSumbit(){
-        console.log(document.getElementById("title").value);
-        if(document.getElementById("title").value == ""){
-            alert("Please Enter A Video Title");
+            console.log(document.getElementById("title").value);
+            if(document.getElementById("title").value == ""){
+                alert("Please Enter A Video Title");
+            }
+            else if(document.getElementById("url").value == ""){
+                alert("Please Enter a Url");
+            }
+            else if(document.getElementById("comment").value == ""){
+                alert("Please Enter A Comment");
+            }
+            else{
+                document.getElementById("f").submit();
+            }
         }
-        else if(document.getElementById("url").value == ""){
-            alert("Please Enter a Url");
-        }
-        else if(document.getElementById("comment").value == ""){
-            alert("Please Enter A Comment");
-        }
-        else{
-            document.getElementById("f").submit();
-        }
-    }
     </script>
 </html>

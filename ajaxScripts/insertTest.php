@@ -1,7 +1,7 @@
 <?php
     include_once '../databaseCreds.php';
-    $userId = $_POST["userId"];
-    $teamId = $_POST["teamId"];
+    session_start();
+    $teamId = $_SESSION["teamId"];
     $distance = htmlspecialchars($_POST["distanceBox"]);
     $title = htmlspecialchars($_POST["titleBox"]);
     
@@ -17,11 +17,6 @@
             var f = document.createElement("form");
             f.action = "../selectRowersForTest.php";
             f.method = "POST";
-            
-            var userId = document.createElement("input");
-            userId.type = "hidden";
-            userId.name = "userId";
-            userId.value = 0<?php echo $userId;?>;
             
             var teamId = document.createElement("input");
             teamId.type = "hidden";
@@ -42,8 +37,6 @@
             testId.type = "hidden";
             testId.name = "testId";
             testId.value = <?php echo $conn->insert_id; ?>;
-            
-            f.appendChild(userId);
             f.appendChild(teamId);
             f.appendChild(distance);
             f.appendChild(title);

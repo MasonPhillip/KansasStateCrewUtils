@@ -1,7 +1,6 @@
 <?php
     include_once('databaseCreds.php'); //include db
-    $query = "SELECT name, discordHandle, isCoach, c2AuthorizationCode AS c2Auth, teamId FROM users WHERE ID = ".$_POST["userId"].";";
-    $person = $conn->query($query)->fetch_assoc();
+
 ?>
 <html lang="en" data-bs-theme="dark">
     <head>
@@ -15,13 +14,17 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/2.0.0/sweetalert2.min.js"></script>
     </head>
     <body>
-        <?php include_once 'navBar.php';?>
+        <?php 
+        include_once 'navBar.php';
+        $query = "SELECT name, discordHandle, isCoach, c2AuthorizationCode AS c2Auth, teamId FROM users WHERE ID = ".$_SESSION["userId"].";";
+        $person = $conn->query($query)->fetch_assoc();
+        ?>
         <br>
         <div class="row">
             <div class="col-1 col-lg-3"></div>
                 <div class="col-12 col-md-12 col-lg-6 pb-3" style='border: solid 3px #AAA;'>
                     <form action="ajaxScripts/updateAccount.php" method="POST" id="f">
-                        <input type="hidden" id="userId" name="userId" value='<?php echo $_POST["userId"]; ?>'></input>
+                        <input type="hidden" id="userId" name="userId" value='<?php echo $_SESSION["userId"]; ?>'></input>
                     <div class="d-flex justify-content-center">
                         <h1 class="display-1">Edit Account</h1>
                     </div>

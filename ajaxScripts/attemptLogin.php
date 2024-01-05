@@ -10,20 +10,24 @@ $password = htmlspecialchars($_POST["password"]);
 $query = "SELECT * FROM users;";
 $result = $conn->query($query);
 
-//set the default xhttp response to invalid
+//set the default ajax response to invalid
 $response = "invalid";
 while($row = $result->fetch_assoc()){
 	if($row["name"] == $name){
-        //if the name is found set the xhttp response to valid name
+        //if the name is found set the ajax response to valid name
         $response="validName";
         if($row["password"] == $password){
-            //if the password matches and the name is found set the xhttp response to valid = the id of that row
+            //if the password matches and the name is found set the ajax response to valid = the id of that row
             $response = "accepted + ".$row["ID"];
+            session_start();
+            $_SESSION["userId"] = $row["ID"];
+            $_SESSION["isCoach"] = $row["isCoach"];
+            $_SESSION["teamId"] = $row["teamID"];
         }
     }
 }
 
-//echo response so xhttp.responseText can grab it
+//echo response so ajax.responseText can grab it
 echo $response;
 
 

@@ -15,7 +15,7 @@
         <br>
         <?php
         //get the info for the user's team
-            $query = "SELECT t.name, t.ID from users AS u JOIN teams AS t on t.ID = u.teamID WHERE u.ID = ".$_POST["userId"];
+            $query = "SELECT t.name, t.ID from users AS u JOIN teams AS t on t.ID = u.teamID WHERE u.ID = ".$_SESSION["userId"];
             $userInfo = $conn->query($query)->fetch_assoc();
         ?>
         <div class="d-flex justify-content-center">
@@ -32,7 +32,7 @@
                     <select id="season" onChange="changeSeason()">
                         <option id="default">Active Rowers</option>
                         <?php 
-                            $query = "SELECT * from seasons WHERE teamId = ".$userInfo["ID"];
+                            $query = "SELECT * from seasons WHERE teamId = ".$userInfo["ID"]." ORDER BY startDate DESC";
                             $seasons = $conn->query($query);
                             if(mysqli_num_rows($seasons) > 0){
                                 while($season = $seasons->fetch_assoc()){
@@ -49,7 +49,7 @@
                         
                         
                         
-                        $filters = " w.type = 'test' AND u.isActive = 1 AND t.teamId = ".$userInfo["ID"]." AND t.date BETWEEN ".$startDate." AND ".$endDate;
+                        $filters = " w.type = 'test' AND u.isActive = 1 AND t.teamId = ".$userInfo["ID"];
                         //initalize 2 arrays to hold the data
                         $times = array();
                         $splits = array();
@@ -132,8 +132,6 @@
                 }
                 //otherwise continue and use an ajax call to get the table data for the selected season
                 var dates = select[select.selectedIndex].id.split("|");
-                console.log(dates[0]);
-                console.log(dates[1]);
                 $.ajax({ 
                    method: "GET",
                    url: "ajaxScripts/getTestHistory.php",

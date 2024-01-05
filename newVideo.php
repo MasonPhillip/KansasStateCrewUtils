@@ -24,7 +24,7 @@
       <label for="comment">Comment:</label>
       <input type="textbox" class="form-control" id="comment" placeholder="Enter comment" name="comment">
     </div>
-    <input type="hidden" id="createdByID", name="createdByID" value=<?php echo "'".$_POST["userId"]."'"; ?>></input>
+    <input type="hidden" id="createdByID", name="createdByID" value=<?php echo "'".$_SESSION["userId"]."'"; ?>></input>
     
     <input type="button" class="btn btn-primary" value="Submit" onClick="validateAndSumbit()"></button>
   </form>

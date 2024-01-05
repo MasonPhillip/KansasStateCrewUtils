@@ -1,7 +1,7 @@
 <html lang="en" data-bs-theme="dark">
     <?php 
         include_once 'databaseCreds.php'; //use the database
-        $query = "SELECT code FROM teams WHERE ID=".$_POST["teamId"];
+        $query = "SELECT code FROM teams WHERE ID=".$_SESSION["teamId"];
         $results = $conn->query($query)->fetch_assoc();
         $query = "SELECT code FROM teams";
         $teamCodes = $conn->query($query);
@@ -25,7 +25,7 @@
             <h1 class="display-1">Manage Team</h1>
         </div>
         <?php 
-            $query = "SELECT ID, name, isCoach, isActive FROM users WHERE teamID=".$_POST["teamId"]." ORDER BY isActive DESC, name ASC";
+            $query = "SELECT ID, name, isCoach, isActive FROM users WHERE teamID=".$_SESSION["teamId"]." ORDER BY isActive DESC, name ASC";
             $athletes = $conn->query($query);
         ?>
         <div class="container">
@@ -108,7 +108,7 @@
                     </div>
                     <br>
                     <div class="d-flex justify-content-center">
-                        <button class="btn" style='background-color: #52307c' onclick="createSeason()">Change Team Code</button>
+                        <button class="btn" style='background-color: #52307c' onclick="createSeason()">Add Season</button>
                     </div>
                 </div>
             </div>
@@ -151,7 +151,7 @@
                                 method: "POST",
                                 url: "ajaxScripts/insertSeason.php",
                                 data:{
-                                    teamId: 0<?php echo $_POST["teamId"];?>,
+                                    teamId: 0<?php echo $_SESSION["teamId"];?>,
                                     startDate: JSON.stringify(startDate).slice(1,10),
                                     endDate: JSON.stringify(endDate).slice(1,10),
                                     name: seasonName
@@ -207,7 +207,7 @@
                                 method: "POST",
                                 url: "ajaxScripts/updateTeamCode.php",
                                 data:{
-                                    teamId: 0<?php echo $_POST["teamId"];?>,
+                                    teamId: 0<?php echo $_SESSION["teamId"];?>,
                                     code: document.getElementById("teamCodeBox").value
                                 },
                                 success: function(data){

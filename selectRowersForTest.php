@@ -2,10 +2,7 @@
     <?php 
         include_once 'databaseCreds.php'; //use the database
         include_once 'timeAndSplitConverter.php';
-        $userId = $_POST["userId"];
-        $teamId = $_POST["teamId"];
-        $distance = $_POST["distance"];
-        $title = $_POST["title"];
+
     ?>
     <head>
     	<title>Select Rowers</title>
@@ -17,7 +14,14 @@
     </head>
 			
     <body>
-        <?php include_once 'navBar.php'; //add navbar ?>
+        <?php 
+        include_once 'navBar.php'; //add navbar
+        $userId = $_SESSION["userId"];
+        $teamId = $_SESSION["teamId"];
+        $distance = $_POST["distance"];
+        $title = $_POST["title"];
+        $testId = $_POST["testId"];
+        ?>
         <br>
 
         <div class="d-flex justify-content-center">
@@ -83,12 +87,12 @@
                     </div>
                     <table class="table table-responsive table-striped table-bordered w-100 text-align-center" id="rowerTable" style="text-align: center; border: 3px solid white">
                         <tr style="border-bottom: 3px solid white">
-                            <th>Name</th>
-                            <th>Last Split</th>
-                            <th>Last Time</th>
-                            <th>Goal Split</th>
-                            <th>Goal Time</th>
-                            <th>Remove</th>
+                            <th style="width: 16%;">Name</th>
+                            <th style="width: 16%;">Last Split</th>
+                            <th style="width: 16%;">Last Time</th>
+                            <th style="width: 16%;">Goal Split</th>
+                            <th style="width: 16%;">Goal Time</th>
+                            <th style="width: 16%;">Remove</th>
                         </tr>
                     </table>
                     <div class="d-flex justify-content-center">
@@ -101,7 +105,7 @@
             //store the values so they can be used across methods
             var time = "0:00";
             var split = "0:00";
-            var distance = <?php echo $distance ?>;
+            var distance = "" + <?php echo $distance ?>;
             var numSplits = distance / 500;
             var tableRow = 0;
             var rowers = [];
@@ -131,7 +135,7 @@
                 return parseInt(mins)*60+parseFloat(secs);
             }
             
-            //converst secs to mins:secs
+            //convert secs to mins:secs
             function convertSecsToMinsSecs(inp){
                 let secs = parseFloat(inp);
                 secs*=10;
@@ -230,6 +234,7 @@
                         secs = "0"+time[1];
                     }
                     document.getElementById("goalTimeSecsBox").value = secs;
+                    checkEnableAddRowerButton()
                 }
             }
             
@@ -266,6 +271,7 @@
                         secs = "0"+time[1];
                     }
                     document.getElementById("goalSplitSecsBox").value = secs;
+                    checkEnableAddRowerButton();
                 }
             }
             
@@ -276,7 +282,6 @@
                 var timeMins = document.getElementById("goalTimeMinsBox").value;
                 var timeSecs = document.getElementById("goalTimeSecsBox").value;
                 var addRowerBtn = document.getElementById("addRowerBtn");
-                
                 if(document.getElementById("rowersSelect").selectedIndex == 0){
                     addRowerBtn.disabled = true;
                 }
@@ -321,6 +326,8 @@
                 document.getElementById("goalTimeMinsBox").value = "";
                 document.getElementById("goalTimeSecsBox").value = "";
                 document.getElementById("startTestBtn").disabled = false;
+                document.getElementById("lastTime").innerHTML = "Last Time: &emsp;";
+                document.getElementById("lastSplit").innerHTML = "Last Split:";
             }
             
             //removes row from table
@@ -350,7 +357,31 @@
             
             //start the test
             function startTest(){
-                
+                var f = document.createElement("form");
+                f.method = "POST";
+                f.action = "runTest.php";
+                var distance = document.createElement("input");
+                distance.type = "hidden";
+                distance.value = "<?php echo $distance;?>";
+                distance.name = "distance";
+                f.appendChild(distance);
+                var testId = document.createElement("input");
+                testId.type = "hidden";
+                testId.value = '<?php echo $testId; ?>';
+                testId.name = "testId";
+                f.appendChild(testId);
+                var rowersInfo = document.createElement("input");
+                rowersInfo.type = "hidden";
+                rowersInfo.value = JSON.stringify(rowers);
+                rowersInfo.name = "rowersInfo";
+                f.appendChild(rowersInfo);
+                var testTitle = document.createElement("input");
+                testTitle.type = "hidden";
+                testTitle.value = '<?php echo $title ?>';
+                testTitle.name = "testTitle";
+                f.appendChild(testTitle);
+                document.body.appendChild(f);
+                f.submit();
             }
         </script>
     </body>

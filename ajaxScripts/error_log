@@ -176,3 +176,110 @@ Stack trace:
 Stack trace:
 #0 {main}
   thrown in /home/t7eeedsafdly/public_html/ajaxScripts/getLastTestTime.php on line 7
+[31-Dec-2023 21:38:32 UTC] PHP Warning:  Array to string conversion in /home/t7eeedsafdly/public_html/ajaxScripts/insertTestResults.php on line 4
+[31-Dec-2023 22:03:56 UTC] PHP Warning:  Undefined array key "title" in /home/t7eeedsafdly/public_html/ajaxScripts/insertTestResults.php on line 6
+[31-Dec-2023 22:05:28 UTC] PHP Warning:  Undefined array key "title" in /home/t7eeedsafdly/public_html/ajaxScripts/insertTestResults.php on line 6
+[31-Dec-2023 22:10:01 UTC] PHP Warning:  Undefined array key "title" in /home/t7eeedsafdly/public_html/ajaxScripts/insertTestResults.php on line 6
+[31-Dec-2023 22:15:54 UTC] PHP Warning:  Undefined array key "title" in /home/t7eeedsafdly/public_html/ajaxScripts/insertTestResults.php on line 6
+[31-Dec-2023 22:15:58 UTC] PHP Warning:  Undefined array key "title" in /home/t7eeedsafdly/public_html/ajaxScripts/insertTestResults.php on line 6
+[31-Dec-2023 22:15:59 UTC] PHP Warning:  Undefined array key "title" in /home/t7eeedsafdly/public_html/ajaxScripts/insertTestResults.php on line 6
+[31-Dec-2023 22:17:29 UTC] PHP Warning:  Undefined array key "title" in /home/t7eeedsafdly/public_html/ajaxScripts/insertTestResults.php on line 6
+[31-Dec-2023 22:17:29 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Column count doesn't match value count at row 1 in /home/t7eeedsafdly/public_html/ajaxScripts/insertTestResults.php:18
+Stack trace:
+#0 /home/t7eeedsafdly/public_html/ajaxScripts/insertTestResults.php(18): mysqli->query()
+#1 {main}
+  thrown in /home/t7eeedsafdly/public_html/ajaxScripts/insertTestResults.php on line 18
+[31-Dec-2023 22:18:29 UTC] PHP Warning:  Undefined array key "title" in /home/t7eeedsafdly/public_html/ajaxScripts/insertTestResults.php on line 6
+[31-Dec-2023 22:18:29 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Column count doesn't match value count at row 1 in /home/t7eeedsafdly/public_html/ajaxScripts/insertTestResults.php:18
+Stack trace:
+#0 /home/t7eeedsafdly/public_html/ajaxScripts/insertTestResults.php(18): mysqli->query()
+#1 {main}
+  thrown in /home/t7eeedsafdly/public_html/ajaxScripts/insertTestResults.php on line 18
+[31-Dec-2023 22:20:18 UTC] PHP Parse error:  syntax error, unexpected token "," in /home/t7eeedsafdly/public_html/ajaxScripts/insertTestResults.php on line 16
+[31-Dec-2023 22:22:12 UTC] PHP Warning:  Undefined array key "title" in /home/t7eeedsafdly/public_html/ajaxScripts/insertTestResults.php on line 6
+[31-Dec-2023 22:50:05 UTC] PHP Warning:  Undefined array key "title" in /home/t7eeedsafdly/public_html/ajaxScripts/insertTestResults.php on line 6
+[31-Dec-2023 22:50:51 UTC] PHP Warning:  Undefined array key "title" in /home/t7eeedsafdly/public_html/ajaxScripts/insertTestResults.php on line 6
+[31-Dec-2023 23:03:01 UTC] PHP Warning:  Undefined array key "title" in /home/t7eeedsafdly/public_html/ajaxScripts/insertTestResults.php on line 6
+[31-Dec-2023 23:04:04 UTC] PHP Warning:  Undefined array key "title" in /home/t7eeedsafdly/public_html/ajaxScripts/insertTestResults.php on line 6
+[31-Dec-2023 23:05:46 UTC] PHP Warning:  Undefined array key "title" in /home/t7eeedsafdly/public_html/ajaxScripts/insertTestResults.php on line 6
+[31-Dec-2023 23:07:16 UTC] PHP Warning:  Undefined array key "title" in /home/t7eeedsafdly/public_html/ajaxScripts/insertTestResults.php on line 6
+[31-Dec-2023 23:09:32 UTC] PHP Warning:  Undefined array key "title" in /home/t7eeedsafdly/public_html/ajaxScripts/insertTestResults.php on line 6
+[31-Dec-2023 23:09:59 UTC] PHP Warning:  Undefined array key "title" in /home/t7eeedsafdly/public_html/ajaxScripts/insertTestResults.php on line 6
+[04-Jan-2024 15:12:44 UTC] PHP Warning:  Undefined variable $_row in /home/t7eeedsafdly/public_html/ajaxScripts/attemptLogin.php on line 25
+[04-Jan-2024 15:12:44 UTC] PHP Warning:  Trying to access array offset on value of type null in /home/t7eeedsafdly/public_html/ajaxScripts/attemptLogin.php on line 25
+[04-Jan-2024 15:27:52 UTC] PHP Warning:  Undefined variable $_row in /home/t7eeedsafdly/public_html/ajaxScripts/attemptLogin.php on line 25
+[04-Jan-2024 15:27:52 UTC] PHP Warning:  Trying to access array offset on value of type null in /home/t7eeedsafdly/public_html/ajaxScripts/attemptLogin.php on line 25
+[04-Jan-2024 15:28:11 UTC] PHP Warning:  Undefined array key "teamId" in /home/t7eeedsafdly/public_html/ajaxScripts/attemptLogin.php on line 25
+[04-Jan-2024 15:28:18 UTC] PHP Warning:  Undefined array key "teamId" in /home/t7eeedsafdly/public_html/ajaxScripts/attemptLogin.php on line 25
+[04-Jan-2024 16:12:56 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Table 'i9673948_wp1.webhooks' doesn't exist in /home/t7eeedsafdly/public_html/ajaxScripts/insertComment.php:8
+Stack trace:
+#0 /home/t7eeedsafdly/public_html/ajaxScripts/insertComment.php(8): mysqli->query()
+#1 {main}
+  thrown in /home/t7eeedsafdly/public_html/ajaxScripts/insertComment.php on line 8
+[04-Jan-2024 16:13:36 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Table 'i9673948_wp1.webhooks' doesn't exist in /home/t7eeedsafdly/public_html/ajaxScripts/insertComment.php:8
+Stack trace:
+#0 /home/t7eeedsafdly/public_html/ajaxScripts/insertComment.php(8): mysqli->query()
+#1 {main}
+  thrown in /home/t7eeedsafdly/public_html/ajaxScripts/insertComment.php on line 8
+[04-Jan-2024 16:18:38 UTC] PHP Warning:  Undefined global variable $_SESSION in /home/t7eeedsafdly/public_html/ajaxScripts/insertVideo.php on line 5
+[04-Jan-2024 16:18:38 UTC] PHP Warning:  Trying to access array offset on value of type null in /home/t7eeedsafdly/public_html/ajaxScripts/insertVideo.php on line 5
+[04-Jan-2024 16:18:38 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ')' at line 1 in /home/t7eeedsafdly/public_html/ajaxScripts/insertVideo.php:6
+Stack trace:
+#0 /home/t7eeedsafdly/public_html/ajaxScripts/insertVideo.php(6): mysqli->query()
+#1 {main}
+  thrown in /home/t7eeedsafdly/public_html/ajaxScripts/insertVideo.php on line 6
+[04-Jan-2024 16:19:07 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function start_session() in /home/t7eeedsafdly/public_html/ajaxScripts/insertVideo.php:3
+Stack trace:
+#0 {main}
+  thrown in /home/t7eeedsafdly/public_html/ajaxScripts/insertVideo.php on line 3
+[04-Jan-2024 16:19:31 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function start_session() in /home/t7eeedsafdly/public_html/ajaxScripts/insertVideo.php:3
+Stack trace:
+#0 {main}
+  thrown in /home/t7eeedsafdly/public_html/ajaxScripts/insertVideo.php on line 3
+[04-Jan-2024 16:20:40 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function start_session() in /home/t7eeedsafdly/public_html/ajaxScripts/insertVideo.php:3
+Stack trace:
+#0 {main}
+  thrown in /home/t7eeedsafdly/public_html/ajaxScripts/insertVideo.php on line 3
+[04-Jan-2024 16:20:50 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function start_session() in /home/t7eeedsafdly/public_html/ajaxScripts/insertVideo.php:3
+Stack trace:
+#0 {main}
+  thrown in /home/t7eeedsafdly/public_html/ajaxScripts/insertVideo.php on line 3
+[04-Jan-2024 16:21:09 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function start_session() in /home/t7eeedsafdly/public_html/ajaxScripts/insertVideo.php:3
+Stack trace:
+#0 {main}
+  thrown in /home/t7eeedsafdly/public_html/ajaxScripts/insertVideo.php on line 3
+[04-Jan-2024 16:22:18 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function start_session() in /home/t7eeedsafdly/public_html/ajaxScripts/insertVideo.php:3
+Stack trace:
+#0 {main}
+  thrown in /home/t7eeedsafdly/public_html/ajaxScripts/insertVideo.php on line 3
+[04-Jan-2024 16:22:44 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function start_session() in /home/t7eeedsafdly/public_html/ajaxScripts/insertVideo.php:3
+Stack trace:
+#0 {main}
+  thrown in /home/t7eeedsafdly/public_html/ajaxScripts/insertVideo.php on line 3
+[04-Jan-2024 16:23:27 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function start_session() in /home/t7eeedsafdly/public_html/ajaxScripts/insertVideo.php:3
+Stack trace:
+#0 {main}
+  thrown in /home/t7eeedsafdly/public_html/ajaxScripts/insertVideo.php on line 3
+[04-Jan-2024 16:24:11 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function start_session() in /home/t7eeedsafdly/public_html/ajaxScripts/insertVideo.php:3
+Stack trace:
+#0 {main}
+  thrown in /home/t7eeedsafdly/public_html/ajaxScripts/insertVideo.php on line 3
+[04-Jan-2024 16:24:19 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function start_session() in /home/t7eeedsafdly/public_html/ajaxScripts/insertVideo.php:3
+Stack trace:
+#0 {main}
+  thrown in /home/t7eeedsafdly/public_html/ajaxScripts/insertVideo.php on line 3
+[04-Jan-2024 16:25:16 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Table 'i9673948_wp1.webhooks' doesn't exist in /home/t7eeedsafdly/public_html/ajaxScripts/insertVideo.php:15
+Stack trace:
+#0 /home/t7eeedsafdly/public_html/ajaxScripts/insertVideo.php(15): mysqli->query()
+#1 {main}
+  thrown in /home/t7eeedsafdly/public_html/ajaxScripts/insertVideo.php on line 15
+[04-Jan-2024 16:25:53 UTC] PHP Warning:  Undefined variable $last_id in /home/t7eeedsafdly/public_html/ajaxScripts/insertVideo.php on line 42
+[04-Jan-2024 16:26:06 UTC] PHP Warning:  Undefined variable $last_id in /home/t7eeedsafdly/public_html/ajaxScripts/insertVideo.php on line 43
+[04-Jan-2024 16:26:27 UTC] PHP Warning:  Undefined variable $last_id in /home/t7eeedsafdly/public_html/ajaxScripts/insertVideo.php on line 42
+[04-Jan-2024 16:33:27 UTC] PHP Warning:  Undefined global variable $_SESSION in /home/t7eeedsafdly/public_html/ajaxScripts/insertTest.php on line 3
+[04-Jan-2024 16:33:27 UTC] PHP Warning:  Trying to access array offset on value of type null in /home/t7eeedsafdly/public_html/ajaxScripts/insertTest.php on line 3
+[04-Jan-2024 16:33:27 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ' 'Session Test')' at line 1 in /home/t7eeedsafdly/public_html/ajaxScripts/insertTest.php:10
+Stack trace:
+#0 /home/t7eeedsafdly/public_html/ajaxScripts/insertTest.php(10): mysqli->query()
+#1 {main}
+  thrown in /home/t7eeedsafdly/public_html/ajaxScripts/insertTest.php on line 10

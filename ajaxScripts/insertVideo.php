@@ -1,22 +1,22 @@
 <?php
 include_once('../databaseCreds.php');
-
+session_start();
 //insert video into vidoes table
-$query = "INSERT INTO videos(url, videoTitle, createdByUserID) VALUES('".str_replace("/view?usp=sharing", "", htmlspecialchars($_POST["url"]))."', '".htmlspecialchars($_POST["title"])."' ,".htmlspecialchars($_POST["createdByID"]).");";
+$query = "INSERT INTO videos(url, videoTitle, createdByUserID) VALUES('".str_replace("/view?usp=sharing", "", htmlspecialchars($_POST["url"]))."', '".htmlspecialchars($_POST["title"])."' ,".htmlspecialchars($_SESSION["userId"]).");";
 $conn->query($query);
 
 //insert the first comment for the video
 $last_id = $conn->insert_id;
-$query = "INSERT INTO comments(userID, videoID, comment) VALUES (".htmlspecialchars($_POST["createdByID"]).", ".$last_id.", '".htmlspecialchars($_POST["comment"])."');";
+$query = "INSERT INTO comments(userID, videoID, comment) VALUES (".htmlspecialchars($_SESSION["userId"]).", ".$last_id.", '".htmlspecialchars($_POST["comment"])."');";
 $conn->query($query);
 
 //get the webhook
-$query = "SELECT webhook FROM webhooks";
+$query = "SELECT webhook FROM teams WHERE ID=".$_SESSION["teamId"];
 $temp = $conn->query($query)->fetch_assoc();
 $discordURL = $temp["webhook"];
 
 //create the message
-$query = "SELECT name FROM users WHERE ID =  ".$_POST["createdByID"];
+$query = "SELECT name FROM users WHERE ID =  ".$_SESSION["userId"];
 $temp = $conn->query($query)->fetch_assoc();
 $name = $temp["name"];
 $msgContent = $name." created a new video thread on this video: ".htmlspecialchars($_POST["title"])." \n".htmlspecialchars($_POST["url"]);
@@ -40,8 +40,6 @@ curl_close($ch);
 <body>
     <form action="../videoComments.php" method="post" id="f">
         <input type="hidden" id="videoID" name="videoID" value=<?php echo "'".$last_id."'";?>></input>
-        <input type="hidden" id="userID" value=<?php echo "'".$_POST["createdByID"]."'";?></input
-        
     </form>
 </body>
 

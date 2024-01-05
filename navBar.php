@@ -11,53 +11,14 @@
   </style>
 </head>
 
-<?php //contains the navbar so it can be easily included and edited on all pages
+
+<?php
+session_start();
+
+
+//contains the navbar so it can be easily included and edited on all pages
 //since the home page is html and it has to be, the navbar on hte home page must be updated manually
-echo "<div class='sticky-top'><nav class='navbar navbar-expand-sm' style='background-color: #52307c;'><div class='container-fluid'><img src='../images/crest.png' class='navLogo' alt='logo'><div class='d-flex justify-content-center'><h3 class='display-3'>Kansas State Crew Utils <h3></div><!-- Links --><ul class='navbar-nav'><li class='nav-item'><a class='nav-link' href='javascript: openWorkoutTracker();'>Workout Tracker</a></li><li class='nav-item'><a class='nav-link' href='javascript: openVideoApp();'>Videos</a></li><li class='nav-item'><a class='nav-link' href='javascript: openAccount();'>Account</a></li></ul></div></nav>";
+echo "<div class='sticky-top'><nav class='navbar navbar-expand-sm' style='background-color: #52307c;'><div class='container-fluid'><img src='../images/crest.png' class='navLogo' alt='logo'><div class='d-flex justify-content-center'><h3 class='display-3'>Kansas State Crew Utils <h3></div><!-- Links --><ul class='navbar-nav'><li class='nav-item'><a class='nav-link' href='pieceTrackerHome.php'>Workout Tracker</a></li><li class='nav-item'><a class='nav-link' href='videos.php'>Videos</a></li><li class='nav-item'><a class='nav-link' href='editAccount.php'>Account</a></li></ul></div></nav>";
 echo "</div>"
 
 ?>
-
-<script>
-
-    function openWorkoutTracker(){
-        var f = document.createElement("form");
-        f.action = "pieceTrackerHome.php";
-        f.method="POST";
-        var userID = document.createElement("input");
-        userID.type = "hidden";
-        userID.Id= "userId";
-        userID.name = "userId";
-        userID.value = <?php echo "0".$_POST["userId"]; ?>;
-        f.appendChild(userID);
-        document.body.appendChild(f);
-        f.submit();
-    }
-    function openVideoApp(){
-        var f = document.createElement("form");
-        f.action = "videos.php";
-        f.method="POST";
-        var userID = document.createElement("input");
-        userID.type = "hidden";
-        userID.Id= "userId";
-        userID.name = "userId";
-        userID.value = <?php echo "0".$_POST["userId"]; ?>;
-        f.appendChild(userID);
-        document.body.appendChild(f);
-        f.submit();
-    }
-    
-    function openAccount(){
-        var f = document.createElement("form");
-        f.action = "editAccount.php";
-        f.method="POST";
-        var userID = document.createElement("input");
-        userID.type = "hidden";
-        userID.Id= "userId";
-        userID.name = "userId";
-        userID.value = <?php echo "0".$_POST["userId"]; ?>;
-        f.appendChild(userID);
-        document.body.appendChild(f);
-        f.submit();
-    }
-</script>
